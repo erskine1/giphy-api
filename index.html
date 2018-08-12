@@ -5,14 +5,29 @@
     <meta charset="UTF-8">
     <title>gif search</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
   <body>
 
+    <div class="container">
+      <h2>gif search</h2>
 
+      <form id="search-form">
+        <label for="search-term">Search for gifs</label>
+        <input type="text" id="search-term"><br>
+  
+        <input id="search" type="submit" value="Search">
+      </form>
+
+      <div id="search-buttons"></div>
+
+    </div>
     
+    <div id="gifs-box"></div>
+
+    <script src="assets/javascript/giphy-search.js"></script>
   </body>
 </html>
