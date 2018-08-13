@@ -1,5 +1,5 @@
 
-var gifList = ["cats", "world of warcraft", "morrowind", "elder scrolls"];
+var topics = ["cats", "world of warcraft", "morrowind", "elder scrolls"];
 
 // FUNCTIONS 
 
@@ -7,7 +7,7 @@ function makeQuery() {
   var queryURL = "https://api.giphy.com/v1/gifs/search?";
   var queryObj = { 'api_key': 'a3QowM2E88r1FVgLspmDLfXOa4GlRWXV' };
   queryObj.q = $('#search-term').val().trim();
-  // queryObj.limit = 50;
+  queryObj.limit = 10;
 
   $('#search-term').val('');
   console.log("---------------\nURL: " + queryURL + "\n---------------")
@@ -17,12 +17,12 @@ function makeQuery() {
 
 function makeButtons() {
   $('#search-buttons').empty();
-  for (var i = 0; i < gifList.length; i++) {
+  for (var i = 0; i < topics.length; i++) {
     var a = $('<button>');
     a.attr('class', 'gif-btn btn btn-secondary');
-    tempID = gifList[i].split(' ').slice(-1);
+    tempID = topics[i].split(' ').slice(-1);
     a.attr('id', `${tempID}-id`);
-    a.text(gifList[i]);
+    a.text(topics[i]);
     $('#search-buttons').append(a);
   }
 }
@@ -32,15 +32,23 @@ function makeGifs(giphyData) {
   console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
     var image = $('<img>');
-    animate = giphyData.data[i].images.fixed_height.url;
-    still = giphyData.data[i].images.fixed_height_still.url;
+    var animate = giphyData.data[i].images.fixed_height.url;
+    var still = giphyData.data[i].images.fixed_height_still.url;
     image.attr('data-animate', animate);
     image.attr('data-still', still);
     image.attr('src', still);
-
     image.attr('data-state', 'still');
     image.attr('class', 'gif img-fluid');
+
+    var gifInfo = $('<div>');
+    gifInfo.attr('class', 'gifInfo')
+    var rating = giphyData.data[i].rating;
+    gifInfo.text(`rating: ${rating}`);
+    image.append(gifInfo);
     $('#gifs-box').append(image);
+
+
+
   }
 }
 
@@ -52,7 +60,7 @@ function clearImages() {
 
 $('#gifs-box').on('click', '.gif', function() {
   var state = $(this).attr('data-state');
-  
+
   if (state === 'still') {
     var animate = $(this).attr(`data-animate`);
     $(this).attr('src', animate);
@@ -74,12 +82,12 @@ $('#search').on('click', function(event) {
     return false;
   }
   // if search is already in array, delete old
-  var searchIndex = gifList.indexOf(search); 
+  var searchIndex = topics.indexOf(search); 
   if (searchIndex >= 0) {
-    gifList.splice(searchIndex, 1);
+    topics.splice(searchIndex, 1);
   }
   // add search to array
-  gifList.push(search);
+  topics.push(search);
 
   makeButtons();
   $('#search-term').val('');

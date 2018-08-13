@@ -21,7 +21,17 @@ input.form-control {
 
 img {
   margin: 5px;
-  max-width: 25%;
+  position: relative;
+}
+
+.gifInfo {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  z-index: 50;
 }
 
 .gif-btn {
