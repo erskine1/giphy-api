@@ -2,6 +2,11 @@
   background: #000;
 }
 
+.search-bar {
+  position: relative;
+  width: 100%;
+}
+
 .banner {
   height: 50px;
   margin-bottom: 20px;
@@ -17,6 +22,45 @@ input.form-control {
 
 .btn {
   border-radius: 0;
+}
+
+.btn-primary, .form-control {
+  background: #000;
+  border: none;
+}
+
+#search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 2px;
+}
+
+#search-term {
+  background: #000;
+  padding-left: 80px;
+  border: 1px solid rgba(100,100,100,0.5);
+  color: #fff;
+}
+
+#search-term:focus {
+  border: 1px solid #38c3f9;
+  box-shadow: none;
+}
+
+#search:hover {
+  color: #38c3f9;
+  background: #000;
+}
+
+#search:active {
+  color: #000;
+  background:  #38c3f9;
+  box-shadow: none;
+}
+
+#search:focus {
+  box-shadow: none;
 }
 
 img {
@@ -38,6 +82,7 @@ img {
   padding: 10px;
   z-index: 1;
   opacity: 0;
+  font-weight: 700;
 }
 
 .imgBox:hover .gifInfo {

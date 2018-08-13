@@ -50,9 +50,6 @@ function makeGifs(giphyData) {
     imgBox.append(gifInfo);
     imgBox.append(image);
     $('#gifs-box').append(imgBox);
-
-
-
   }
 }
 
