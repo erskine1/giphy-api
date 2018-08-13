@@ -112,6 +112,7 @@ img {
 
 .gif-btn:focus, .gif-btn:active {
   box-shadow: none;
+  outline: none;
 }
 
 @media (min-width: 1300px) {
