@@ -21,6 +21,7 @@ input.form-control {
 
 img {
   margin: 5px;
+  max-width: 25%;
 }
 
 .gif {
@@ -28,6 +29,8 @@ img {
   border: none;
   padding: 0 10px;
   margin-left: 5px;
+  margin-bottom: 5px;
+  outline: none;
 }
 
 .gif:hover {
@@ -35,12 +38,11 @@ img {
 }
 
 .gif:focus, .gif:active {
-  outline: none;
-  border: none;
+  box-shadow: none;
 }
 
 @media (min-width: 1300px) {
 .container {
-  max-width: 1240px;
+  max-width: 1280px;
 }
 }
