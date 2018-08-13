@@ -31,6 +31,9 @@ function makeGifs(giphyData) {
   console.log(giphyData);
   console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
+    var imgBox = $('<div>');
+    imgBox.attr('class', 'imgBox');
+
     var image = $('<img>');
     var animate = giphyData.data[i].images.fixed_height.url;
     var still = giphyData.data[i].images.fixed_height_still.url;
@@ -44,8 +47,9 @@ function makeGifs(giphyData) {
     gifInfo.attr('class', 'gifInfo')
     var rating = giphyData.data[i].rating;
     gifInfo.text(`rating: ${rating}`);
-    image.append(gifInfo);
-    $('#gifs-box').append(image);
+    imgBox.append(gifInfo);
+    imgBox.append(image);
+    $('#gifs-box').append(imgBox);
 
 
 

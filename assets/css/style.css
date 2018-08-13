@@ -20,19 +20,30 @@ input.form-control {
 }
 
 img {
-  margin: 5px;
   position: relative;
+}
+
+.imgBox { 
+  max-width: 400px;
+  position: relative;
+  float: left;
+  margin: 5px;
 }
 
 .gifInfo {
   color: #fff;
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: left;
-  z-index: 50;
+  width: 100%;
+  padding: 10px;
+  z-index: 1;
+  opacity: 0;
 }
+
+.imgBox:hover .gifInfo {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+} 
 
 .gif-btn {
   background: #4f606d;
