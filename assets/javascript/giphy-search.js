@@ -19,7 +19,7 @@ function makeButtons() {
   $('#search-buttons').empty();
   for (var i = 0; i < gifList.length; i++) {
     var a = $('<button>');
-    a.attr('class', 'gif btn btn-secondary');
+    a.attr('class', 'gif-btn btn btn-secondary');
     tempID = gifList[i].split(' ').slice(-1);
     a.attr('id', `${tempID}-id`);
     a.text(gifList[i]);
@@ -33,9 +33,13 @@ function makeGifs(giphyData) {
   for (var i = 0; i < giphyData.data.length; i++) {
     var image = $('<img>');
     animate = giphyData.data[i].images.fixed_height.url;
-    static = giphyData.data[i].images.fixed_height_still.url;
-    image.attr('src', static);
-    image.attr('class', 'img-fluid');
+    still = giphyData.data[i].images.fixed_height_still.url;
+    image.attr('data-animate', animate);
+    image.attr('data-still', still);
+    image.attr('src', still);
+
+    image.attr('data-state', 'still');
+    image.attr('class', 'gif img-fluid');
     $('#gifs-box').append(image);
   }
 }
@@ -46,9 +50,21 @@ function clearImages() {
 
 // EVENT HANDLERS
 
-$('.gif').on('click', function(event) {
-
+$('#gifs-box').on('click', '.gif', function() {
+  var state = $(this).attr('data-state');
+  
+  if (state === 'still') {
+    var animate = $(this).attr(`data-animate`);
+    $(this).attr('src', animate);
+    $(this).attr('data-state', 'animate');
+  }
+  else if (state === 'animate') {
+    var still = $(this).attr('data-still');
+    $(this).attr('src', still);
+    $(this).attr('data-state', 'still');
+  }
 });
+
 
 $('#search').on('click', function(event) {
   event.preventDefault();
@@ -70,7 +86,7 @@ $('#search').on('click', function(event) {
   $(`#${tempID}-id`).click();
 });
 
-$(document).on('click', '.gif', function(event) {
+$(document).on('click', '.gif-btn', function(event) {
   var selected = $(`#${this.id}`).text()
   clearImages(); 
 

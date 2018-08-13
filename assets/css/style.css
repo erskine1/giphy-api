@@ -24,7 +24,7 @@ img {
   max-width: 25%;
 }
 
-.gif {
+.gif-btn {
   background: #4f606d;
   border: none;
   padding: 0 10px;
@@ -33,11 +33,11 @@ img {
   outline: none;
 }
 
-.gif:hover {
+.gif-btn:hover {
   background: #38c3f9;
 }
 
-.gif:focus, .gif:active {
+.gif-btn:focus, .gif-btn:active {
   box-shadow: none;
 }
 
