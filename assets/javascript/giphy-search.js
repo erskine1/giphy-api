@@ -1,5 +1,5 @@
 
-var topics = ["cats", "world of warcraft", "morrowind", "elder scrolls"];
+var topics = ["star wars", "star trek", "morrowind", "the expanse", "cats"];
 
 // FUNCTIONS 
 
@@ -32,7 +32,7 @@ function makeGifs(giphyData) {
   console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
     var imgBox = $('<div>');
-    imgBox.attr('class', 'imgBox');
+    imgBox.attr('class', 'imgBox grid-item');
 
     var image = $('<img>');
     var animate = giphyData.data[i].images.fixed_height.url;
@@ -42,6 +42,7 @@ function makeGifs(giphyData) {
     image.attr('src', still);
     image.attr('data-state', 'still');
     image.attr('class', 'gif img-fluid');
+    // image.attr('class', 'gif grid-item')
 
     var gifInfo = $('<div>');
     gifInfo.attr('class', 'gifInfo')
@@ -109,4 +110,8 @@ $(document).on('click', '.gif-btn', function(event) {
 });
 
 makeButtons(); 
-
+$('.grid').masonry({
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 200
+});
