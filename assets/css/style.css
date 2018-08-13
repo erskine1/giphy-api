@@ -55,13 +55,13 @@ input.form-control {
 }
 
 #search:hover {
-  color: #38c3f9;
-  background: #000;
+  background: #38c3f9;
+  /* background: #000; */
 }
 
 #search:active {
-  color: #000;
-  background:  #38c3f9;
+  color: #fff;
+  background: #000;
   box-shadow: none;
 }
 
