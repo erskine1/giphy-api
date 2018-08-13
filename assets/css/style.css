@@ -1,0 +1,46 @@
+.navbar {
+  background: #000;
+}
+
+.banner {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+body {
+  background: #222;
+}
+
+input.form-control {
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+img {
+  margin: 5px;
+}
+
+.gif {
+  background: #4f606d;
+  border: none;
+  padding: 0 10px;
+  margin-left: 5px;
+}
+
+.gif:hover {
+  background: #38c3f9;
+}
+
+.gif:focus, .gif:active {
+  outline: none;
+  border: none;
+}
+
+@media (min-width: 1300px) {
+.container {
+  max-width: 1240px;
+}
+}

@@ -9,6 +9,7 @@ function makeQuery() {
   // a3QowM2E88r1FVgLspmDLfXOa4GlRWXV
   var queryObj = { 'api_key': 'a3QowM2E88r1FVgLspmDLfXOa4GlRWXV' };
   queryObj.q = $('#search-term').val().trim();
+  queryObj.limit = 50;
   // &q=&limit=25&offset=0&rating=G&lang=en
   $('#search-term').val('');
   console.log("---------------\nURL: " + queryURL + "\n---------------")
@@ -22,7 +23,8 @@ function makeButtons() {
   for (var i = 0; i < gifList.length; i++) {
     var a = $('<button>');
     // add class for button when user clicks
-    a.addClass('gif')
+    // a.addClass('gif')
+    a.attr('class', 'gif btn btn-secondary');
     // add ID for search button to click on search
     // so it doesn't click all buttons
     tempID = gifList[i].split(' ').slice(-1);
@@ -36,19 +38,18 @@ function makeButtons() {
 
 function makeGifs(giphyData) {
   console.log(giphyData);
-
+  console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
     var image = $('<img>');
     image.attr('src', giphyData.data[i].images.fixed_height.url);
-    $('#gifs-box').prepend(image);
-  }  
-
-  
+    image.attr('class', 'img-fluid');
+    $('#gifs-box').append(image);
+  }
 }
 
-// function clearImages() {
-  // clear the images area using .empty() 
-// }
+function clearImages() {
+  $('#gifs-box').empty();
+}
 
 // EVENT HANDLERS
 
@@ -88,7 +89,7 @@ $(document).on('click', '.gif', function(event) {
   var selected = $(`#${this.id}`).text()
   // console.log($(`#${this.id}`).text()); 
   // $(this).removeAttr('id'); 
-  // clearImages(); 
+  clearImages(); 
 
   $('#search-term').val(selected);
   var queryURL = makeQuery();
