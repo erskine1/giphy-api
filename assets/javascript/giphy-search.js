@@ -27,6 +27,8 @@ function makeButtons() {
   }
 }
 
+makeButtons();
+
 function makeGifs(giphyData) {
   console.log(giphyData);
   console.log(giphyData.data.length);
@@ -113,4 +115,11 @@ $(document).on('click', '.gif-btn', function(event) {
   }).then(makeGifs);
 });
 
-makeButtons();
+$('#reset').on('click', function(event) {
+  event.preventDefault();
+  clearImages();
+  $('#search-title').empty();
+  $('#search-term').val('');
+  topics = ["star wars", "star trek", "morrowind", "the expanse", "cats"];
+  makeButtons();
+});
