@@ -23,7 +23,7 @@ function makeButtons() {
     tempID = topics[i].split(' ').slice(-1);
     a.attr('id', `${tempID}-id`);
     a.text(topics[i]);
-    $('#search-buttons').append(a);
+    $('#search-buttons').prepend(a);
   }
 }
 
@@ -35,14 +35,13 @@ function makeGifs(giphyData) {
     imgBox.attr('class', 'imgBox');
 
     var image = $('<img>');
-    var animate = giphyData.data[i].images.fixed_height.url;
-    var still = giphyData.data[i].images.fixed_height_still.url;
+    var animate = giphyData.data[i].images.fixed_width.url;
+    var still = giphyData.data[i].images.fixed_width_still.url;
     image.attr('data-animate', animate);
     image.attr('data-still', still);
     image.attr('src', still);
     image.attr('data-state', 'still');
-    image.attr('class', 'gif img-fluid');
-    // image.attr('class', 'gif grid-item')
+    image.attr('class', 'gif');
 
     var gifInfo = $('<div>');
     gifInfo.attr('class', 'gifInfo')
@@ -51,6 +50,7 @@ function makeGifs(giphyData) {
     imgBox.append(gifInfo);
     imgBox.append(image);
     $('#gifs-box').append(imgBox);
+
   }
 }
 
@@ -102,6 +102,10 @@ $(document).on('click', '.gif-btn', function(event) {
 
   $('#search-term').val(selected);
   var queryURL = makeQuery();
+
+  $('#search-title').empty();
+  var title = $(`<h6>#${selected}</h6>`);
+  $('#search-title').append(title);
 
   $.ajax({
     url: queryURL,
