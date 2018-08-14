@@ -10,11 +10,10 @@ function makeQuery() {
   queryObj.limit = 10;
 
   $('#search-term').val('');
-  console.log("---------------\nURL: " + queryURL + "\n---------------")
-  console.log(queryURL + $.param(queryObj));
   return queryURL + $.param(queryObj); 
 }
 
+// creates tag buttons
 function makeButtons() {
   $('#search-buttons').empty();
   for (var i = 0; i < topics.length; i++) {
@@ -29,9 +28,8 @@ function makeButtons() {
 
 makeButtons();
 
+// builds the gifs on the page
 function makeGifs(giphyData) {
-  console.log(giphyData);
-  console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
     var imgBox = $('<div>');
     imgBox.attr('class', 'imgBox');
@@ -62,6 +60,7 @@ function clearImages() {
 
 // EVENT HANDLERS
 
+// start and stop gifs
 $('#gifs-box').on('click', '.gif', function() {
   var state = $(this).attr('data-state');
 
@@ -77,7 +76,7 @@ $('#gifs-box').on('click', '.gif', function() {
   }
 });
 
-
+// search button
 $('#search').on('click', function(event) {
   event.preventDefault();
   var search = $('#search-term').val().trim(); 
@@ -86,6 +85,7 @@ $('#search').on('click', function(event) {
     return false;
   }
   // if search is already in array, delete old
+  // prevents ID conflicts and redundant buttons
   var searchIndex = topics.indexOf(search); 
   if (searchIndex >= 0) {
     topics.splice(searchIndex, 1);
@@ -98,6 +98,7 @@ $('#search').on('click', function(event) {
   $(`#${tempID}-id`).click();
 });
 
+// gif tag buttons
 $(document).on('click', '.gif-btn', function(event) {
   var selected = $(`#${this.id}`).text()
   clearImages(); 
@@ -115,6 +116,7 @@ $(document).on('click', '.gif-btn', function(event) {
   }).then(makeGifs);
 });
 
+// reset button
 $('#reset').on('click', function(event) {
   event.preventDefault();
   clearImages();

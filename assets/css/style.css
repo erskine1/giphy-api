@@ -8,6 +8,10 @@
   width: 100%;
 }
 
+#search-form {
+  padding-left: 0;
+}
+
 .banner {
   height: 50px;
   margin: 0 10px 20px 10px;
