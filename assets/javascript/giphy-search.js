@@ -32,7 +32,7 @@ function makeGifs(giphyData) {
   console.log(giphyData.data.length);
   for (var i = 0; i < giphyData.data.length; i++) {
     var imgBox = $('<div>');
-    imgBox.attr('class', 'imgBox grid-item');
+    imgBox.attr('class', 'imgBox');
 
     var image = $('<img>');
     var animate = giphyData.data[i].images.fixed_height.url;
@@ -109,9 +109,4 @@ $(document).on('click', '.gif-btn', function(event) {
   }).then(makeGifs);
 });
 
-makeButtons(); 
-$('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 200
-});
+makeButtons();

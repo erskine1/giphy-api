@@ -115,11 +115,6 @@ img {
   outline: none;
 }
 
-.grid-item { 
-  width: 250px;
-  /* max-height: 200px; */
-}
-
 @media (min-width: 1300px) {
 .container {
   max-width: 1280px;
